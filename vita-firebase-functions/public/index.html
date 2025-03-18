@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/10.12.3/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/10.12.3/firebase-auth-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.12.3/firebase-database-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.12.3/firebase-firestore-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.12.3/firebase-functions-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.12.3/firebase-messaging-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.12.3/firebase-storage-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.12.3/firebase-analytics-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.12.3/firebase-remote-config-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/10.12.3/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <style media="screen">
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        font-family: Arial, sans-serif;
+      }
+      .loader {
+        border: 6px solid #f3f3f3; /* Reduced border width */
+        border-radius: 50%;
+        border-top: 6px solid #2d9bf0; /* Reduced border width */
+        border-bottom: 6px solid #2d9bf0; /* Reduced border width */
+        border-left: 6px solid #2d9bf0; /* Reduced border width */
+
+        width: 60px; /* Reduced size */
+        height: 60px; /* Reduced size */
+        -webkit-animation: spin 1.5s linear infinite;
+        animation: spin 1.5s linear infinite;
+      }
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader"></div>
+    <script>
+      const refreshUrl = 'https://vita-abe0f.web.app/reauth';
+      const returnUrl = 'https://vita-abe0f.web.app/return';
+
+      // if (
+      //   window.location.href === refreshUrl ||
+      //   window.location.href === returnUrl
+      // ) {
+      //   // Simulate loading
+      //   setTimeout(() => {
+      //     window.location.href = returnUrl; // or another URL you want to redirect to
+      //   }, 3000); // 3 seconds delay
+      // }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth',
+            'database',
+            'firestore',
+            'functions',
+            'messaging',
+            'storage',
+            'analytics',
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(
+            ', ',
+          )}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent =
+            'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
+</html>

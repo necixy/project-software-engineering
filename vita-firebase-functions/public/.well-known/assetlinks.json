@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vita",
+      "sha256_cert_fingerprints": [
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
+        "96:63:66:E2:2E:03:34:76:2D:4B:DB:6E:FB:EE:41:55:D7:27:1B:AC:72:60:93:19:53:74:A0:DA:37:93:88:77"
+      ]
+    }
+  }
+]

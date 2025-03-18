@@ -1,0 +1,17 @@
+export const colors = {
+  primary: '#2D9BF0',
+  secondary: '#FFFFFF',
+  grey: '#7F7F7F',
+  defaultBlack: '#000000',
+  lightGrey: '#d3d3d3',
+  placeHolder: '#bcbeba',
+  red: '#F24726',
+  inputGrey: '#E6E6E6',
+  inputBackground: '#F7F7F7',
+  inputBorder: '#E9E9E9',
+  placeHolderInput: '#bcbeba',
+  buttonColors: '#57AFF3',
+  green: '#4fd97a',
+  yellow: '#fac711',
+  lightBlueContainer: '#D7ECFD',
+};

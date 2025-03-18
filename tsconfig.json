@@ -1,0 +1,12 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "exclude": ["node_modules", "__tests__/**/*-test.ts"],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["*"]
+    },
+    "typeRoots": ["./types"]
+  },
+  "include": ["src", "metro.config.js"]
+}

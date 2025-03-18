@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+       <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+           <item name="colorPrimaryDark">@color/blue</item>
+        <!-- <item name="android:autofilledHighlight">@drawable/autofill_highlight</item> -->
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- <item name="app:srcCompat">@drawable/vita_textlogo</item> -->
+    <!-- <item name="android:windowBackground">@drawable/vita_textlogo</item> -->
+    <item name="android:statusBarColor">@color/blue</item>
+    <item name="android:windowDisablePreview">true</item>
+    <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+    </style>
+
+</resources>

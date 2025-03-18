@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vita - Account Deletion</title>
+    <style>
+      /* Google Font */
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #2d9bf0, #1c7bcf);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h2 {
+        color: #2d9bf0;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      label {
+        font-size: 14px;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #2d9bf0;
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(45, 155, 240, 0.5);
+      }
+
+      textarea {
+        resize: none;
+        height: 80px;
+      }
+
+      button {
+        background-color: #2d9bf0;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+        transition: background 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background-color: #1c7bcf;
+      }
+
+      .message {
+        margin-top: 15px;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        display: none;
+      }
+
+      .success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .error {
+        color: red;
+        font-size: 12px;
+        /* margin-top: -8px; */
+        margin-bottom: 10px;
+      }
+      .errorBox {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Request Account Deletion</h2>
+
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required />
+        <p class="error" id="emailError"></p>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          required />
+        <p class="error" id="passwordError"></p>
+      </div>
+
+      <div class="input-group">
+        <label for="reason">Reason for Deletion</label>
+        <textarea
+          id="reason"
+          placeholder="Explain why you want to delete your account">
+        </textarea>
+        <p class="error" id="reasonError"></p>
+      </div>
+
+      <button onclick="submitRequest()">Submit Request</button>
+
+      <div id="message" class="message"></div>
+    </div>
+
+    <script>
+      function isValidEmail(email) {
+        const emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+      function submitRequest() {
+        // Error
+        document.getElementById('emailError').innerText = '';
+        document.getElementById('passwordError').innerText = '';
+        document.getElementById('reasonError').innerText = '';
+        // document.getElementById('successMessage').innerText = '';
+
+        // Fields
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const reason = document.getElementById('reason').value;
+        const messageBox = document.getElementById('message');
+        const submitButton = document.querySelector('button');
+
+        messageBox.style.display = 'none'; // Hide message box before new request
+
+        let isValid = true;
+
+        // Validation
+        if (!email) {
+          document.getElementById('emailError').innerText =
+            'Email is required.';
+          isValid = false;
+        } else if (!isValidEmail(email)) {
+          document.getElementById('emailError').innerText =
+            'Invalid email format.';
+          isValid = false;
+        }
+
+        if (!password) {
+          document.getElementById('passwordError').innerText =
+            'Password is required.';
+          isValid = false;
+        }
+
+        if (!reason) {
+          document.getElementById('reasonError').innerText =
+            'Reason is required.';
+          isValid = false;
+        } else if (reason.length < 100) {
+          document.getElementById('reasonError').innerText =
+            'Reason must be at least 100 characters.';
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Disable button and show loading state
+        submitButton.innerText = 'Loading...';
+        submitButton.disabled = true;
+        submitButton.style.backgroundColor = '#b0c4de'; // Gray out button
+
+        // Extract server_type from URL
+        const serverType = getQueryParam('server_type') || 'LIVE';
+        fetch(
+          'https://us-central1-vita-abe0f.cloudfunctions.net/api/auth/account-deletion',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              server_type: serverType,
+            },
+            body: JSON.stringify({email, password, reason}),
+          },
+        )
+          .then(response => response.json())
+          .then(data => {
+            if (data?.error?.code === 'auth/invalid-credential') {
+              messageBox.textContent = 'Bad credentials.';
+            } else {
+              messageBox.textContent = data.success
+                ? data?.message
+                : data?.message ??
+                  data?.error?.message ??
+                  'Something went wrong!';
+            }
+
+            messageBox.className = data.success
+              ? 'message success'
+              : 'message error errorBox';
+            messageBox.style.display = 'block';
+
+            if (data.success) {
+              // Clear form fields on success
+              document.getElementById('email').value = '';
+              document.getElementById('password').value = '';
+              document.getElementById('reason').value = '';
+            }
+          })
+          .catch(() => {
+            messageBox.textContent = 'Something went wrong. Please try again.';
+            messageBox.className = 'message error errorBox';
+            messageBox.style.display = 'block';
+          })
+          .finally(() => {
+            // Restore button state
+            submitButton.innerText = 'Submit Request';
+            submitButton.disabled = false;
+            submitButton.style.backgroundColor = '#2d9bf0'; // Restore button color
+          });
+      }
+    </script>
+  </body>
+</html>

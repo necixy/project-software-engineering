@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "X3VPVZ78V6.com.boardvita.vita",
+        "paths": ["NOT /_/*", "/*"]
+      }
+    ]
+  }
+}

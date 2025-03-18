@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "976546399680",
+    "firebase_url": "https://vita-abe0f-default-rtdb.firebaseio.com",
+    "project_id": "vita-abe0f",
+    "storage_bucket": "vita-abe0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976546399680:android:97bcbc1cfc4944b052b425",
+        "android_client_info": {
+          "package_name": "com.vita"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSOz3uo_12LLHeSgCDjO7frAD5cSVtBBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
